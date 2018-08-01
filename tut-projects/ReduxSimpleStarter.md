@@ -44,3 +44,31 @@ We should select the most parent component that cares about a particular state t
 Two important notes:
 1. If our application state  changes(like user clicks something which causes list of books to be updated) then our BookList component will re-render.
 2. `this.props` being set set equal to object returned by `mapStateToProps` function.
+
+### Number 44
+Lifecycle of action method:
+
+![Lifecycle of action method](https://user-images.githubusercontent.com/13077629/43527996-f1215e08-9575-11e8-8465-2c912523de95.png)
+
+### Number 45
+Actions are just an object that flows through different reducers. Reducers then use it to work on different piece of state.
+
+We need to make action creator is wired up to redux.
+```javascript
+import {bindActionCreators} from 'redux';
+
+function mapDispatchToProps(dispatch){
+  //Whenever selectBook is called, the result should be 
+  //passed to all the reducers
+  return bindActionCreators({selectBook: selectBook}, dispatch)
+}
+```
+This will help in ensuring that whatever action happens it flows through all the reducers. Dispatch will takes the action and will flow it through all the reducers. 
+
+Anything returned from this function will end up as this.props on the BookList container. So `this.props.selectBook` will call the function `selectBook`.
+
+### Number 47
+State passed to the reducer is NOT the application state, only the state this reducer is responsible for.
+
+### Number 49
+Our application state is assembled entirely by all of our reducers. So redux sends a booting up action through all the reducers.
