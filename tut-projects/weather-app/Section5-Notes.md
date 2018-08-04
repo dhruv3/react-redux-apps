@@ -13,3 +13,5 @@ Uncontrolled Component: Use `refs` to access dom input elements and then access 
 
 ## Lec 54
 Whenever user focus is in input element and he/she presses ENTER or clicks SUBMIT then form element(due to its HTML behavior) will get submitted. We don't want frequent refresh happening. So we handle onSubmit event and then preventDefault() inside of it.
+
+## Redux Middleware
