@@ -40,9 +40,12 @@ Need to call action creators? Connect them using mapDispatchToProps(which in tur
 
 ## Lec 59: Redux-Promise
 redux-promise is a middleware that resolves the promise and unwraps the promise for use. It knows that reducers don't care about the promise but care about the data. So it processes the object returned by actio creators and then deliver it to the reducer.
+
 <img width="486" alt="redux-promis" src="https://user-images.githubusercontent.com/13077629/43689918-48757e1c-98cf-11e8-8890-94fa34eb4904.png">
+
 So now we get code that looks like a synchronous code.
 
 ## Lec 62
 Current Redux State:
+
 <img width="577" alt="screen shot 2018-08-05 at 5 34 25 pm" src="https://user-images.githubusercontent.com/13077629/43690291-ece97966-98d5-11e8-8027-5c603eff0f39.png">
