@@ -1,0 +1,30 @@
+form.searchFprm{
+  width: 664px;
+}
+
+form.searchFprm  input{
+  height: 38px;
+}
+
+body, html{
+    height: 100%;
+    background-color: honeydew;
+}
+
+.margin-bottom-20{
+  margin-bottom: 20px;
+}
+
+.margin-top-20{
+  margin-top: 20px;
+}
+
+.margin-right-20{
+  margin-right: 20px;
+}
+
+.btnContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
