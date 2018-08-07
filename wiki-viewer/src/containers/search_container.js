@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchWiki} from '../actions/index';
 
 class SearchContainer extends Component{
   constructor() {
@@ -11,7 +14,10 @@ class SearchContainer extends Component{
     this.setState({term: event.target.value});
   }
   onFormSubmit(event){
+    event.preventDefault();
 
+    this.props.fetchWiki(this.state.term);
+    this.setState({term: ''});
   }
   render(){
     return(
@@ -35,4 +41,8 @@ class SearchContainer extends Component{
   }
 }
 
-export default SearchContainer;
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ fetchWiki }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchContainer);
