@@ -7,8 +7,8 @@ form.searchFprm  input{
 }
 
 body, html{
-    height: 100%;
-    background-color: honeydew;
+  height: 100%;
+  background-color: #092B40;
 }
 
 .margin-bottom-20{
@@ -27,4 +27,31 @@ body, html{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+ul.resultContainer li{
+  list-style-type: none;
+  display: block;
+  margin-bottom: 10px;
+  padding: 15px 30px 5px 30px;
+  background-color: floralwhite;;
+  -webkit-animation: new-item 1s ease-in-out forwards;
+  -moz-animation: new-item 1s ease-in-out forwards;
+  animation: new-item 1s ease-in-out forwards;
+  -webkit-transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+  -moz-transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+  transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+ul.resultContainer li h1{
+  font-size: 18px;
+}
+
+ul.resultContainer li p{
+  font-size: 14px;
+}
+
+ul.resultContainer a{
+  text-decoration: none;
+  color: black;
 }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import SearchContainer from '../containers/search_container';
-import DisplayComponent from '../containers/display_component';
+import DisplayContainer from '../containers/display_container';
 
 class App extends Component {
   render() {
     return (
       <div>
         <SearchContainer />
-        <DisplayComponent />
+        <DisplayContainer />
       </div>
     );
   }

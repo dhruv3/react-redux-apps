@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchWiki} from '../actions/index';
+import {clearDisplay} from '../actions/clear_display';
 
 class SearchContainer extends Component{
   constructor() {
@@ -19,6 +20,12 @@ class SearchContainer extends Component{
     this.props.fetchWiki(this.state.term);
     this.setState({term: ''});
   }
+  openRandomArticle(){
+    window.open("https://en.wikipedia.org/wiki/Special:Random", "_blank");
+  }
+  clearDisplay(){
+    this.props.clearDisplay()
+  }
   render(){
     return(
       <form onSubmit={this.onFormSubmit.bind(this)} className="container searchFprm">
@@ -32,9 +39,9 @@ class SearchContainer extends Component{
             <button type="submit" className="btn btn-primary">Submit</button>
           </span>
         </div>
-        <div className="row btnContainer">
-          <button className="btn btn-secondary margin-right-20">Clear</button>
-          <button className="btn btn-primary">Random!</button>
+        <div className="row btnContainer margin-bottom-20">
+          <button type="button" className="btn btn-secondary margin-right-20" onClick={this.clearDisplay.bind(this)}>Clear</button>
+          <button type="button" className="btn btn-primary" onClick={this.openRandomArticle}>Random Article!</button>
         </div>
     </form>
     )
@@ -42,7 +49,7 @@ class SearchContainer extends Component{
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ fetchWiki }, dispatch);
+  return bindActionCreators({ fetchWiki, clearDisplay }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(SearchContainer);
