@@ -8,6 +8,9 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <div className="heading">
+          <h1>Recipe Box</h1>
+        </div>
         <RecipeListContainer/>
         <RecipeDetailContainer/>
         <RecipeEditModalContainer/>

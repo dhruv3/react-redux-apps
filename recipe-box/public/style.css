@@ -9,3 +9,46 @@ body, html{
   justify-content: center;
   align-items: center;
 }
+
+.heading{
+  text-align: center;
+  color: mediumblue;
+}
+
+.recipeListContainer{
+  width: 900px;
+  height: 95px;
+  overflow: auto;
+  margin-bottom: 5px;
+  border: 5px solid lightblue;
+  border-radius: 10px;
+}
+
+.recipeDetailHeader{
+  background-color: darkgrey;
+}
+
+.recipeDetailHeader .title-row button{
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 32px;
+}
+
+.recipeDetailContainer .recipeBox{
+  background: lightblue;
+  height: 330px;
+  overflow-y: scroll;
+  padding: 0 10px;
+}
+
+.addButton{
+  background-color: darkgrey;
+}
+
+.addButton button{
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 32px;
+}
