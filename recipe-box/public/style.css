@@ -16,7 +16,6 @@ body, html{
 }
 
 .recipeListContainer{
-  width: 900px;
   height: 95px;
   overflow: auto;
   margin-bottom: 5px;
@@ -51,4 +50,8 @@ body, html{
   border: none;
   outline: none;
   font-size: 32px;
+}
+
+.container{
+  width: 70%;
 }
