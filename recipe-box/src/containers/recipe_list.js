@@ -5,12 +5,18 @@ class RecipeList extends Component{
   constructor(props){
     super(props);
   }
-
+  renderList(data){
+    return(
+      <li key={data.recipe}>
+        <div>{data.recipe}</div>
+      </li>
+    )
+  }
   render(){
     return(
       <div className="row recipeListContainer">
-        <ul>
-
+        <ul className="recipeListUL">
+          {this.props.data.map(this.renderList)}
         </ul>
       </div>
     )

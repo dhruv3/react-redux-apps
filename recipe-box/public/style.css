@@ -55,3 +55,40 @@ body, html{
 .container{
   width: 70%;
 }
+
+ul.recipeListUL{
+  padding: 0px;
+  margin: 0px;
+}
+
+ul.recipeListUL li{
+  list-style-type: none;
+  display: block;
+  padding: 5px;
+  -webkit-animation: new-item 1s ease-in-out forwards;
+  -moz-animation: new-item 1s ease-in-out forwards;
+  animation: new-item 1s ease-in-out forwards;
+  -webkit-transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+  -moz-transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+  transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+  cursor: pointer;
+}
+
+ul.recipeListUL li div{
+  font-size: 18px;
+}
+
+ul.recipeListUL li:hover{
+  font-weight: bolder;
+  opacity: 0.7;
+}
+
+ul.recipeListUL  li:nth-child(odd){
+  background-color: brown;
+  color: blanchedalmond;
+}
+
+ul.recipeListUL  li:nth-child(even){
+  background-color: blanchedalmond;
+  color: brown;
+}
