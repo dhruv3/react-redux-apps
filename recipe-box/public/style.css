@@ -27,6 +27,11 @@ body, html{
   background-color: darkgrey;
 }
 
+.title-row{
+  display: flex;
+  align-items: center;
+}
+
 .recipeDetailHeader .title-row button{
   background: none;
   border: none;
@@ -91,4 +96,11 @@ ul.recipeListUL  li:nth-child(odd){
 ul.recipeListUL  li:nth-child(even){
   background-color: blanchedalmond;
   color: brown;
+}
+
+.recipeHeading{
+  color: white;
+  font-size: 40px;
+  margin: 0 15px;
+  font-style: italic;
 }
