@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class RecipeList extends Component{
+class RecipeList extends Component{
+  constructor(props){
+    super(props);
+  }
+
   render(){
     return(
       <div className="row recipeListContainer">
@@ -11,3 +16,5 @@ export default class RecipeList extends Component{
     )
   }
 }
+
+export default connect()(RecipeList);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class RecipeDetail extends Component{
+class RecipeDetail extends Component{
   render(){
     return(
       <div className="row recipeDetailContainer">
@@ -20,3 +21,5 @@ export default class RecipeDetail extends Component{
     )
   }
 }
+
+export default connect()(RecipeDetail);

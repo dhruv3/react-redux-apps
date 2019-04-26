@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class RecipeEditModal extends React.Component {
   constructor(props) {
@@ -14,4 +15,4 @@ class RecipeEditModal extends React.Component {
   }
 }
 
-export default RecipeEditModal;
+export default connect()(RecipeEditModal);
