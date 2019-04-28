@@ -12,19 +12,19 @@ body, html{
 
 .heading{
   text-align: center;
-  color: mediumblue;
+  color: darkred;
 }
 
 .recipeListContainer{
   height: 95px;
   overflow: auto;
   margin-bottom: 5px;
-  border: 5px solid lightblue;
+  border: 5px solid darkorange;
   border-radius: 10px;
 }
 
 .recipeDetailHeader{
-  background-color: darkgrey;
+  background-color: darkorange;
 }
 
 .title-row{
@@ -37,17 +37,25 @@ body, html{
   border: none;
   outline: none;
   font-size: 32px;
+  cursor: pointer;
+}
+
+.recipeDetailHeader .title-row button:hover{
+  color: red;
 }
 
 .recipeDetailContainer .recipeBox{
-  background: lightblue;
+  background: slategray;
   height: 330px;
   overflow-y: scroll;
   padding: 0 10px;
+  font-family: Montserrat;
+  color: white;
+  font-size: 18px;
 }
 
 .addButton{
-  background-color: darkgrey;
+  background-color: darkorange;
 }
 
 .addButton button{
@@ -55,6 +63,10 @@ body, html{
   border: none;
   outline: none;
   font-size: 32px;
+  cursor: pointer;
+}
+.addButton button:hover{
+  color: red;
 }
 
 .container{
@@ -103,4 +115,13 @@ ul.recipeListUL  li:nth-child(even){
   font-size: 40px;
   margin: 0 15px;
   font-style: italic;
+}
+
+.ingredientHeading, .directionHeading{
+  font-size: 30px;
+}
+ 
+.ingredientHeading{
+  font-style: italic;
+  margin-top: 5px;
 }

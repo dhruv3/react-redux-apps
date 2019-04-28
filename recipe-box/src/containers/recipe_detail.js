@@ -33,16 +33,16 @@ class RecipeDetail extends Component{
         </div>
         <div className="recipeBox">
           <div className="ingredientBox">
-            <div>Ingredients:</div>
-            <ul>
+            <div className="ingredientHeading">Ingredients:</div>
+            <ul className="ingredientList">
               {this.createBox(this.props.data[this.props.selIndex]["ingredients"])}
             </ul>
           </div>
           <div className="directionBox">
-            <div>Directions:</div>
-            <ul>
+            <div className="directionHeading">Directions:</div>
+            <ol type="1" className="directionList">
               {this.createBox(this.props.data[this.props.selIndex]["directions"])}
-            </ul>
+            </ol>
           </div>
         </div>
         <div className="addButton">
