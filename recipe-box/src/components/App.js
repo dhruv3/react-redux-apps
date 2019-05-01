@@ -17,14 +17,14 @@ class App extends Component {
         </div>
         <RecipeListContainer data={this.props.data} selIndex={this.props.selIndex}/>
         <RecipeDetailContainer data={this.props.data} selIndex={this.props.selIndex}/>
-        <RecipeEditModalContainer isVisible={this.props.isVisible}/>
+        <RecipeEditModalContainer isVisible={this.props.isVisible} mode={this.props.mode}/>
       </div>
     );
   }
 }
 
 function mapStateToProps(state){
-  return { data: state.content.data, selIndex: state.content.selIndex, isVisible: state.content.isVisible };
+  return { data: state.content.data, selIndex: state.content.selIndex, isVisible: state.content.isVisible, mode: state.content.mode };
 }
 
 export default connect(mapStateToProps)(App);

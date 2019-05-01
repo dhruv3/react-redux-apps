@@ -8,8 +8,20 @@ class RecipeEditModal extends React.Component {
 
   render() {
     return (
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <div className="recipeModal dialog-wrap">
+        <div className="dialog-header">Recipe</div>
+        <div className="dialog-label">Edit Recipe</div>
+        <textarea rows="1" placeholder="Recipe Name"></textarea>
+        <div className="dialog-label">Ingredients</div>
+        <textarea placeholder="Separate each ingredient with a &quot;\&quot;: Milk \ 2 Eggs \ 1/3 Cup Sugar"></textarea>
+        <div className="dialog-label">Directions</div>
+        <textarea placeholder="Separate each step with a '\': 
+        Preheat oven to 350°F \ 
+        Combine ingredients in pie crust \ 
+        Bake until crust is golden brown. \"></textarea>
+        <br/>
+        <button>Save</button>
+        <button>Cancel</button>
       </div>
     );
   }

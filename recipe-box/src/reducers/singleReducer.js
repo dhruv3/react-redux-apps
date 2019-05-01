@@ -102,7 +102,8 @@ const initialState = {
       }
     ],
     "selIndex": 0,
-    "isVisible": false
+    "isVisible": false,
+    "mode": "add"
 }
 
 export function singleReducer(state=initialState, action) {
