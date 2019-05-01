@@ -1,12 +1,8 @@
 import { combineReducers } from 'redux';
-import {headerReducer} from './headerReducer';
-import {contentReducer} from './contentReducer';
-import {dialogReducer} from './dialogReducer';
+import {singleReducer} from './singleReducer';
 
 const rootReducer = combineReducers({
-    header: headerReducer,
-    content: contentReducer,
-    dialog: dialogReducer
+    content: singleReducer
 });
 
 export default rootReducer;
