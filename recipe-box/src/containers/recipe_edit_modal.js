@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {cancelRecipe} from '../actions/recipeCancel';
 
 class RecipeEditModal extends React.Component {
   constructor(props) {
@@ -21,10 +23,14 @@ class RecipeEditModal extends React.Component {
         Bake until crust is golden brown. \"></textarea>
         <br/>
         <button>Save</button>
-        <button>Cancel</button>
+        <button onClick={() => this.props.cancelRecipe()}>Cancel</button>
       </div>
     );
   }
 }
 
-export default connect()(RecipeEditModal);
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ cancelRecipe }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(RecipeEditModal);
