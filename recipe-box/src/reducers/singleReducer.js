@@ -1,4 +1,5 @@
 import {UPDATE_SELECTED_RECIPE} from '../actions/recipeSelected';
+import {DELETE_RECIPE} from '../actions/recipeDeleted';
 
 const initialState = {
     "data": [
@@ -104,13 +105,14 @@ const initialState = {
     "isVisible": false
 }
 
-  export function singleReducer(state=initialState, action) {
+export function singleReducer(state=initialState, action) {
     switch(action.type) {
         case UPDATE_SELECTED_RECIPE:
             if(action.payload == -1)
                 return state;
             return {...state, selIndex: action.payload}
-
+        case DELETE_RECIPE:
+            return {...state, data: [...state.data.slice(0,state.selIndex), ...state.data.slice(state.selIndex+1)]}    
         default:
             return state;
     }
