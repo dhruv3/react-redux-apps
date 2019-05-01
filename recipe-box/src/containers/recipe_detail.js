@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {deleteRecipe} from '../actions/recipeDeleted';
+import {editRecipe} from '../actions/recipeEdited';
+import {addRecipe} from '../actions/recipeAdded';
 
 class RecipeDetail extends Component{
   constructor(props){
@@ -29,8 +31,8 @@ class RecipeDetail extends Component{
           <div className="title"></div>
           <div className="title-row">
             <div className="recipeHeading">{this.props.data[this.props.selIndex]["recipe"]}</div>
-            <button id="delete-" title="Delete Recipe" value="" onClick={() => this.props.deleteRecipe()}><i className="fa fa-trash"></i></button>
-            <button id="edit-" title="Edit Recipe" value=""><i className="fas fa-edit"></i></button>
+            <button id="delete-recipe" title="Delete Recipe" value="" onClick={() => this.props.deleteRecipe()}><i className="fa fa-trash"></i></button>
+            <button id="edit-recipe" title="Edit Recipe" value="" onClick={() => this.props.editRecipe()}><i className="fas fa-edit"></i></button>
           </div>
         </div>
         <div className="recipeBox">
@@ -48,7 +50,7 @@ class RecipeDetail extends Component{
           </div>
         </div>
         <div className="addButton">
-          <button id="add-recipe" title="Add Recipe"><i className="far fa-plus-square"></i></button>
+          <button id="add-recipe" title="Add Recipe" onClick={() => this.props.addRecipe()}><i className="far fa-plus-square"></i></button>
         </div>
       </div>
     )
@@ -56,7 +58,7 @@ class RecipeDetail extends Component{
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ deleteRecipe }, dispatch);
+  return bindActionCreators({ deleteRecipe, editRecipe, addRecipe }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(RecipeDetail);

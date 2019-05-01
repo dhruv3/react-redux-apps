@@ -8,9 +8,9 @@ class RecipeEditModal extends React.Component {
 
   render() {
     return (
-      <div className="recipeModal dialog-wrap">
-        <div className="dialog-header">Recipe</div>
-        <div className="dialog-label">Edit Recipe</div>
+      <div className="recipeModal dialog-wrap" style={{display: this.props.isVisible ? 'block': 'none'}}>
+        <div className="dialog-header">{this.props.mode=="edit" ? 'Edit': 'Add'} Recipe</div>
+        <div className="dialog-label">Recipe Name</div>
         <textarea rows="1" placeholder="Recipe Name"></textarea>
         <div className="dialog-label">Ingredients</div>
         <textarea placeholder="Separate each ingredient with a &quot;\&quot;: Milk \ 2 Eggs \ 1/3 Cup Sugar"></textarea>
