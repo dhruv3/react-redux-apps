@@ -117,7 +117,15 @@ export function singleReducer(state=initialState, action) {
               return state;
           return {...state, selIndex: action.payload}
         case DELETE_RECIPE:
-          return {...state, data: [...state.data.slice(0,state.selIndex), ...state.data.slice(state.selIndex+1)]} 
+          //single recipe in list gets deleted.
+          if(state.data.length-1 === 0){
+            return {noRecipe: true, data:[], selIndex: 0}
+          }
+          //last recipe in list gets deleted. Select the topmost recipe
+          if(state.data.length-1 === state.selIndex)
+            return {...state, selIndex: 0, data: [...state.data.slice(0,state.selIndex), ...state.data.slice(state.selIndex+1)]}
+          else
+            return {...state, data: [...state.data.slice(0,state.selIndex), ...state.data.slice(state.selIndex+1)]} 
         case EDIT_RECIPE:
           return {...state, mode:"edit", isVisible:true};
         case ADD_RECIPE:

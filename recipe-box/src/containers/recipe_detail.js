@@ -25,6 +25,15 @@ class RecipeDetail extends Component{
 
   
   render(){
+    if(this.props.data.length === 0){
+      return(
+        <div className="row recipeDetailContainer">
+          <div className="addButton">
+            <button id="add-recipe" title="Add Recipe" onClick={() => this.props.addRecipe()}><i className="far fa-plus-square"></i></button>
+          </div>
+        </div>
+      )
+    }
     return(
       <div className="row recipeDetailContainer">
         <div className="recipeDetailHeader">
