@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RecipeListContainer from '../containers/recipe_list';
 import RecipeDetailContainer from '../containers/recipe_detail';
-import RecipeEditModalContainer from '../containers/recipe_edit_modal';
+import RecipeModalWrapper from '../containers/recipe_modal_wrapper';
 import {connect} from 'react-redux';
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
         </div>
         <RecipeListContainer data={this.props.data} selIndex={this.props.selIndex}/>
         <RecipeDetailContainer data={this.props.data} selIndex={this.props.selIndex}/>
-        <RecipeEditModalContainer isVisible={this.props.isVisible} mode={this.props.mode}/>
+        <RecipeModalWrapper data={this.props.data} selIndex={this.props.selIndex} isVisible={this.props.isVisible} mode={this.props.mode}/>
       </div>
     );
   }

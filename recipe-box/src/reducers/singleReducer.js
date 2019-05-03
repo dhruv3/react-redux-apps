@@ -3,7 +3,7 @@ import {DELETE_RECIPE} from '../actions/recipeDeleted';
 import {EDIT_RECIPE} from '../actions/recipeEdited';
 import {ADD_RECIPE} from '../actions/recipeAdded';
 import {CANCEL_RECIPE} from '../actions/recipeCancel';
-import {SAVE_RECIPE} from '../actions/recipeSave';
+import {SAVE_RECIPE, SAVE_EDIT_RECIPE} from '../actions/recipeSave';
 
 const initialState = {
     "data": [
@@ -133,7 +133,9 @@ export function singleReducer(state=initialState, action) {
         case CANCEL_RECIPE:
           return {...state, isVisible:false}; 
         case SAVE_RECIPE:
-          return {...state, isVisible:false, data: [...state.data, action.payload]};    
+          return {...state, isVisible:false, data: [...state.data, action.payload]}; 
+        case SAVE_EDIT_RECIPE:
+          return {...state, isVisible:false, data: [...state.data.slice(0,state.selIndex), action.payload, ...state.data.slice(state.selIndex+1)]};    
         default:
           return state;
     }
