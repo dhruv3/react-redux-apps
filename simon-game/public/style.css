@@ -35,6 +35,9 @@ body {
   flex-direction: column;
   width: 500px;
   background-color: azure;
+  border-radius: 20%;
+  border: 20px solid mediumblue;
+  overflow: hidden;
 }
 
 .controller{
