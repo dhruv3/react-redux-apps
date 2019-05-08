@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
 import Controller from '../components/Controller.js';
 import ButtonContainer from './ButtonContainer.js';
-import {generateMainString} from '../assets/DataUtils';
+import {connect} from 'react-redux';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      pattern: "",
-      selectBtn: "",
-    };
-    this.playPressed = this.playPressed.bind(this);
   }
-  playPressed(){
-    const pattern = generateMainString().split(",");
-    for(let i = 0; i < pattern.length; i++){
-      
-    }
-  }
+
   render() {
     return (
       <div className="container">
-        <Controller playPressed={this.playPressed}/>
-        <ButtonContainer playBtn={this.state.selectBtn}/>
+        <Controller play={this.props.play} strict={this.props.strict}/>
+        <ButtonContainer score={this.props.score} pattern={this.props.pattern} userInput={this.props.userInput}/>
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state){
+  return { play: state.content.play, strict: state.content.strict, score: state.content.score, pattern: state.content.pattern, userInput: state.content.userInput};
+}
+
+export default connect(mapStateToProps)(App);
 
