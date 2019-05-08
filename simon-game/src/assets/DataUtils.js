@@ -4,6 +4,6 @@ export function generateMainString(){
   for(let i = 0; i < count; i++){
     out += Math.floor((Math.random() * 4) + 1) + ","
   }
-  out = out.substr(0, out.length-1)
+  out = out.substr(0, out.length-1).split(",");
   return out;
 }

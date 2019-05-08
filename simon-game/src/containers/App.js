@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="container">
         <Controller play={this.props.play} strict={this.props.strict}/>
-        <ButtonContainer score={this.props.score} pattern={this.props.pattern} userInput={this.props.userInput}/>
+        <ButtonContainer play={this.props.play} score={this.props.score} pattern={this.props.pattern} userInput={this.props.userInput}/>
       </div>
     );
   }

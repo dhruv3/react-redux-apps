@@ -4,9 +4,6 @@ import AudioButton from '../components/AudioButton.js';
 class ButtonContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      level: "00"
-    };
     this.buttonInfo = [{
       name: "red",
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
@@ -25,10 +22,19 @@ class ButtonContainer extends Component {
     }]
   }
 
+  componentWillUpdate(nextProps, nextState){
+    if(nextProps.play === false){
+      //play audio button
+      //wait for inp
+      //if no inp => wrong buzzer
+      //else compare inp with string
+    }
+  }
+
   render() {
     return (
       <div className="btnContainer">
-        <h1 className="level">{this.state.level}</h1>
+        <h1 className="level">{this.props.score}</h1>
         <div className="btnLvl">
           <AudioButton info={this.buttonInfo[0]}/>
           <AudioButton info={this.buttonInfo[1]}/>

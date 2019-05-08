@@ -10,7 +10,7 @@ class Controller extends Component {
   render() {
     return (
       <div className="controller">
-        <PlayBtn name={this.props.play}/>
+        <PlayBtn play={this.props.play}/>
         <ToggleBtn name="Strict Mode" mode={this.props.strict}/>
       </div>
     );
