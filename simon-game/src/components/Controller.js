@@ -13,7 +13,7 @@ class Controller extends Component {
   }
 
   playBtnClick(){
-    if(this.state.mainBtnLabel == "Play"){
+    if(this.state.mainBtnLabel === "Play"){
       this.props.playPressed();
     }
   }
