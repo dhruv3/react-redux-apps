@@ -6,24 +6,41 @@ class ButtonContainer extends Component {
     super(props);
     this.buttonInfo = [{
       name: "red",
+      id: "1",
       ref: React.createRef(),
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
     },
     {
       name: "green",
+      id: "2",
       ref: React.createRef(),
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"
     },
     {
       name: "yellow",
+      id: "3",
       ref: React.createRef(),
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"
     },
     {
       name: "blue",
+      id: "4",
       ref: React.createRef(),
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
-    }]
+    }];
+    this.playAudio = this.playAudio.bind(this);
+    this.interval = 0;
+  }
+
+  playAudio(e){
+    const elem = e.target;
+    elem.play();
+    elem.parentElement.classList.add('hover-class');
+    setTimeout(() => {
+      elem.parentElement.classList.remove('hover-class');
+    }, 500);
+    clearInterval(this.interval);
+    //dispatch action here
   }
 
   componentWillUpdate(nextProps, nextState){
@@ -31,14 +48,16 @@ class ButtonContainer extends Component {
       //play audio button
       const score = nextProps.score;
       const idx = parseInt(nextProps.pattern[score]) - 1;
-      this.buttonInfo[idx]["ref"].current.play();
+      this.buttonInfo[idx]["ref"].current.click();
       //wait for inp
       let userInp = nextProps.userInp;
       this.interval = setInterval(() => {
-        //if no inp => wrong buzzer
-      }, 1000);
+        this.buttonInfo[0]["ref"].current.play();
+        this.buttonInfo[1]["ref"].current.play();
+        this.buttonInfo[2]["ref"].current.play();
+        this.buttonInfo[3]["ref"].current.play();
+      }, 6000);
       //else compare inp with string
-      clearInterval(this.interval);
     }
     else{
       //reset stuff
@@ -50,12 +69,12 @@ class ButtonContainer extends Component {
       <div className="btnContainer">
         <h1 className="level">{this.props.score}</h1>
         <div className="btnLvl">
-          <AudioButton info={this.buttonInfo[0]}/>
-          <AudioButton info={this.buttonInfo[1]}/>
+          <AudioButton clickCB={this.playAudio} info={this.buttonInfo[0]}/>
+          <AudioButton clickCB={this.playAudio} info={this.buttonInfo[1]}/>
         </div>
         <div className="btnLvl">
-          <AudioButton info={this.buttonInfo[2]}/>
-          <AudioButton info={this.buttonInfo[3]}/>
+          <AudioButton clickCB={this.playAudio} info={this.buttonInfo[2]}/>
+          <AudioButton clickCB={this.playAudio} info={this.buttonInfo[3]}/>
         </div>
       </div>
     );

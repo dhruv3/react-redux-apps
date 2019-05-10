@@ -80,25 +80,25 @@ body {
 .audioDiv.red{
   background-color: #9f0f17;
 }
-.audioDiv.red:hover{
+.audioDiv.red.hover-class{
   background-color: #ff4c4c;
 }
 .audioDiv.green{
   background-color: #00a74a;
 }
-.audioDiv.green:hover{
+.audioDiv.green.hover-class{
   background-color: #13ff7c;
 }
 .audioDiv.yellow{
   background-color: #cca707;
 }
-.audioDiv.yellow:hover{
+.audioDiv.yellow.hover-class{
   background-color: #fed93f;
 }
 .audioDiv.blue{
   background-color: #094a8f;
 }
-.audioDiv.blue:hover{
+.audioDiv.blue.hover-class{
   background-color: #1c8cff;
 }
 /* Audio Button */
