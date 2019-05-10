@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import AudioButton from '../components/AudioButton.js';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {userPatternInput} from '../actions/userButtonPress';
 
 class ButtonContainer extends Component {
   constructor(props) {
@@ -42,6 +45,7 @@ class ButtonContainer extends Component {
       elem.parentElement.classList.remove('hover-class');
     }, 500);
     //dispatch action to update user input
+    userPatternInput(elem.getAttribute('name'));
   }
 
   //triggered by app to follow random pattern
@@ -92,4 +96,8 @@ class ButtonContainer extends Component {
   }
 }
 
-export default ButtonContainer;
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ userPatternInput }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(ButtonContainer);
