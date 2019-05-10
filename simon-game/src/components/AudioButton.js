@@ -8,12 +8,13 @@ class AudioButton extends Component {
   }
   playAudio(e){
     e.target.children[0].play();
+    //dispatch action here
   }
   render() {
     let className = `audioDiv ${this.props.info.name}`;
     return (
       <div className={className} onClick={this.playAudio}>
-        <audio className="clip" src={this.props.info.audio}></audio>
+        <audio className="clip" ref={this.props.info.ref} src={this.props.info.audio}></audio>
       </div>
     );
   }

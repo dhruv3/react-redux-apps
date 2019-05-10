@@ -6,18 +6,22 @@ class ButtonContainer extends Component {
     super(props);
     this.buttonInfo = [{
       name: "red",
+      ref: React.createRef(),
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
     },
     {
       name: "green",
+      ref: React.createRef(),
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"
     },
     {
       name: "yellow",
+      ref: React.createRef(),
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"
     },
     {
       name: "blue",
+      ref: React.createRef(),
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
     }]
   }
@@ -25,9 +29,19 @@ class ButtonContainer extends Component {
   componentWillUpdate(nextProps, nextState){
     if(nextProps.play === false){
       //play audio button
+      const score = nextProps.score;
+      const idx = parseInt(nextProps.pattern[score]) - 1;
+      this.buttonInfo[idx]["ref"].current.play();
       //wait for inp
-      //if no inp => wrong buzzer
+      let userInp = nextProps.userInp;
+      this.interval = setInterval(() => {
+        //if no inp => wrong buzzer
+      }, 1000);
       //else compare inp with string
+      clearInterval(this.interval);
+    }
+    else{
+      //reset stuff
     }
   }
 
