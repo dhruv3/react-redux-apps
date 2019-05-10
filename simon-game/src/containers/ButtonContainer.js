@@ -3,6 +3,8 @@ import AudioButton from '../components/AudioButton.js';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {userPatternInput} from '../actions/userButtonPress';
+import {updateScore} from '../actions/updateScore';
+import {runState} from '../actions/updateRunState';
 
 class ButtonContainer extends Component {
   constructor(props) {
@@ -33,6 +35,7 @@ class ButtonContainer extends Component {
     }];
     this.playAudio = this.playAudio.bind(this);
     this.playAudioParent = this.playAudioParent.bind(this);
+    this.boinkSound = this.boinkSound.bind(this);
     this.interval = 0;
   }
 
@@ -45,7 +48,11 @@ class ButtonContainer extends Component {
       elem.parentElement.classList.remove('hover-class');
     }, 500);
     //dispatch action to update user input
-    userPatternInput(elem.getAttribute('name'));
+    if(this.props.play === false){
+      this.props.userPatternInput(elem.getAttribute('name'));
+      this.props.runState(true);
+      clearInterval(this.interval);
+    }
   }
 
   //triggered by app to follow random pattern
@@ -57,25 +64,49 @@ class ButtonContainer extends Component {
     setTimeout(() => {
       elem.parentElement.classList.remove('hover-class');
     }, 500);
-    clearInterval(this.interval);
   }
 
-  componentWillUpdate(nextProps, nextState){
-    if(nextProps.play === false){
+  shouldComponentUpdate(nextProps, nextState){
+    debugger;
+    if(nextProps.play === false && nextProps.run){
       //play audio button
       const score = nextProps.score;
       const idx = parseInt(nextProps.pattern[score]) - 1;
       this.buttonInfo[idx]["ref"].current.click();
       //6 second alarm to remind user for his input
       this.interval = setInterval(() => {
-        this.buttonInfo[0]["ref"].current.play();
-        this.buttonInfo[1]["ref"].current.play();
-        this.buttonInfo[2]["ref"].current.play();
-        this.buttonInfo[3]["ref"].current.play();
+        this.boinkSound()
       }, 6000);
+      this.props.runState(false);
     }
     else{
       //reset stuff
+    }
+    return true;
+  }
+
+  boinkSound(){
+    this.buttonInfo[0]["ref"].current.play();
+    this.buttonInfo[1]["ref"].current.play();
+    this.buttonInfo[2]["ref"].current.play();
+    this.buttonInfo[3]["ref"].current.play();
+  }
+
+  componentWillUpdate(nextProps, nextState){
+    debugger;
+    if(this.props.play === false){
+      if(nextProps.userInput.length - this.props.userInput.length === 1){
+        //compare user input with our string
+        for(let i = 0; i < nextProps.userInput.length; i++){
+          if(nextProps.userInput[i] != this.props.pattern[i]){
+            //incorrect input
+            this.boinkSound();
+            return true;
+          }
+        }
+        //update score and you'll go to next iteration
+        this.props.updateScore(this.props.score+1);
+      }
     }
   }
 
@@ -97,7 +128,7 @@ class ButtonContainer extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ userPatternInput }, dispatch);
+  return bindActionCreators({ userPatternInput, updateScore, runState }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ButtonContainer);
