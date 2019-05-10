@@ -29,10 +29,24 @@ class ButtonContainer extends Component {
       audio: "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
     }];
     this.playAudio = this.playAudio.bind(this);
+    this.playAudioParent = this.playAudioParent.bind(this);
     this.interval = 0;
   }
 
+  //triggered when user clicks
+  playAudioParent(e){
+    const elem = e.target.children[0];
+    elem.play();
+    elem.parentElement.classList.add('hover-class');
+    setTimeout(() => {
+      elem.parentElement.classList.remove('hover-class');
+    }, 500);
+    //dispatch action to update user input
+  }
+
+  //triggered by app to follow random pattern
   playAudio(e){
+    e.stopPropagation();
     const elem = e.target;
     elem.play();
     elem.parentElement.classList.add('hover-class');
@@ -40,7 +54,6 @@ class ButtonContainer extends Component {
       elem.parentElement.classList.remove('hover-class');
     }, 500);
     clearInterval(this.interval);
-    //dispatch action here
   }
 
   componentWillUpdate(nextProps, nextState){
@@ -49,15 +62,13 @@ class ButtonContainer extends Component {
       const score = nextProps.score;
       const idx = parseInt(nextProps.pattern[score]) - 1;
       this.buttonInfo[idx]["ref"].current.click();
-      //wait for inp
-      let userInp = nextProps.userInp;
+      //6 second alarm to remind user for his input
       this.interval = setInterval(() => {
         this.buttonInfo[0]["ref"].current.play();
         this.buttonInfo[1]["ref"].current.play();
         this.buttonInfo[2]["ref"].current.play();
         this.buttonInfo[3]["ref"].current.play();
       }, 6000);
-      //else compare inp with string
     }
     else{
       //reset stuff
@@ -69,12 +80,12 @@ class ButtonContainer extends Component {
       <div className="btnContainer">
         <h1 className="level">{this.props.score}</h1>
         <div className="btnLvl">
-          <AudioButton clickCB={this.playAudio} info={this.buttonInfo[0]}/>
-          <AudioButton clickCB={this.playAudio} info={this.buttonInfo[1]}/>
+          <AudioButton clickCB={this.playAudio} clickParentCB={this.playAudioParent} info={this.buttonInfo[0]}/>
+          <AudioButton clickCB={this.playAudio} clickParentCB={this.playAudioParent} info={this.buttonInfo[1]}/>
         </div>
         <div className="btnLvl">
-          <AudioButton clickCB={this.playAudio} info={this.buttonInfo[2]}/>
-          <AudioButton clickCB={this.playAudio} info={this.buttonInfo[3]}/>
+          <AudioButton clickCB={this.playAudio} clickParentCB={this.playAudioParent} info={this.buttonInfo[2]}/>
+          <AudioButton clickCB={this.playAudio} clickParentCB={this.playAudioParent} info={this.buttonInfo[3]}/>
         </div>
       </div>
     );
